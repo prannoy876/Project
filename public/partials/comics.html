@@ -1,0 +1,76 @@
+﻿<body>
+
+  <div  class="movie-container container" >
+    
+    <div id="custom-bootstrap-menu" class="navbar navbar-default " role="navigation">
+     <div class="container-fluid">
+        <div class="navbar-header"><a class="navbar-brand" href="#"> <img style=" max-height:52px; max-width:140px; margin-top: -15px;"
+             src="../images/brand.jpg"></a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse navbar-menubuilder">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="#/dashboard">Home</a>
+                </li>
+                <li><a href="#/comics">Comics</a>
+                </li>
+                <li><a href="#/character">Characters</a>
+                </li>
+                 <li ng-if="loggedin==false"><a href="#/signup">Sign Up</a>
+                </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" ng-if="loggedin">
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{name}}<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#/cart">Cart</a></li>
+                    <li><a href="#/personal">My Profile</a></li>
+                    <li class="divider"></li>
+                    <li><a ng-click="logout()">Logout</a></li>
+          </ul>
+        </li>
+                </ul>
+            </ul>
+         </div>
+      </div>
+  </div>
+
+    
+     <div class="input-group">
+         <input type="text" placeholder="Enter a search query" class=" search form-control" ng-model="searchByBookName" />
+         <span class="input-group-btn">
+         <button class="btn btn-primary" ng-click="getCharacter()"><span class="glyphicon glyphicon-search" /></button>
+         </span>
+     </div>
+     
+     </br>
+     </br>
+
+     <div id="overlay-for-contacts" >
+            <div class="alert alert-info" id="overlay-for-contacts-inside">
+            <p class="info"><h4>{{comicstatus}}</h4></p>
+            <button type="button" class="btn closebutton btn-default"  value="Close">Close</button>
+            </div>
+    </div>
+
+     
+
+ <div class="first-row container">
+<div  ng-repeat = "row in comics "class="row">
+  <div  ng-repeat ="book in row | filter:searchByBookName" class="col-sm-3 character-container">
+    <div class="thumbnail">
+      <img src="{{book.thumbnail.path}}.{{ book.thumbnail.extension}}" class="poster" alt="Avengers:Age of Ultron"  height="120" width="336">
+      <div class="caption">
+        <h3>{{hero.name}}</h3>
+        <p><a  href="#/comic/{{book.id}}" class="btn btn-primary" role="button">View Comic</a> <a  ng-if="loggedin" class="btn btn-primary2 " ng-click="addToCart(book)" role="button">Add To Cart</a></p>
+      </div>
+    </div>
+  </div>
+  </div>
+
+       
+  </div>
+  </div>
+ 
+  </body>

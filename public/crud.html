@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Angular JS Routing</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
+   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-route.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-resource.min.js"></script>
+  <script src="js/Crud.js"></script>
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+
+<style>
+
+
+.main-container
+{
+    padding:70px;
+    margin-bottom:10px;
+    
+}
+
+.search-container
+{
+    padding-bottom:10px;
+}
+
+
+</style>
+
+<script type='text/javascript'>
+
+  
+</script>
+
+  
+</head>
+<body ng-app="CrudApp">
+
+
+<nav class="navbar  navbar-fixed-top navbar-inverse" id="my-navbar">
+       <div class="container">
+         <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+             </button>
+              <a href="" class="navbar-brand">cs5610</a>
+         </div> 
+       </div>
+  </nav>
+
+<div class="main-container" ng-controller="CrudCtrl">
+   <table class="table table-striped">
+     <thead>
+
+     <tr>
+       <th><input ng-model="flight.airways" class="form-control" /></th>
+       <th><input ng-model="flight.to" class="form-control" /></th>
+       <th><input ng-model="flight.from" class="form-control" /></th>
+       <th><input ng-model="flight.Model" class="form-control" /></th>
+       <th><button ng-click="add(flight)" class="btn btn-primary glyphicon glyphicon-plus"></button></th>
+        <th><button ng-click="save(flight)" class="btn btn-success glyphicon glyphicon-ok"></button></th>
+     </tr>
+     <tr>
+
+           <th>AirWays</th>
+           <th>Destination</th>
+           <th>Origin</th>
+           <th>Plane Model</th>
+          
+     </tr>
+     </thead>
+      <tr  ng-repeat="flight in flights">
+           <td>{{flight.airways}}</td>
+              <td>{{flight.to}}</td>
+                 <td>{{flight.from}}</td>
+                    <td>{{flight.Model}}</td>
+           <td><button  ng-click="remove($index)"class="btn btn-danger glyphicon glyphicon-remove pull-right"></i></td>
+           <td><button  ng-click="edit($index)" class="btn btn-default glyphicon glyphicon-pencil pull-right"></i></td>
+     </tr>
+     <tbody> 
+     </tbody>
+  </table>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js"></script>
+    <script src="js/posts.js"></script>
+ 
+
+</head>
+
+<style>
+.movie-container
+{
+   padding:100px;
+}
+.poster
+{
+    margin:5px;
+    float:left;
+}
+.well
+{
+    margin:0px;
+}
+</style>
+<body ng-app="PostApp">
+
+ <nav class="navbar  navbar-fixed-top navbar-inverse" id="my-navbar">
+       <div class="container">
+         <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+             </button>
+              <a href="" class="navbar-brand">cs5610</a>
+          </div>
+
+          
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <a href="Experiments.aspx" class="btn btn-info navbar-btn navbar-right">Experiments</a>
+                <ul class=" nav navbar-nav">
+                   <li class="active"><a href="../Default.aspx">Home</a></li>
+                </ul>
+            </div>
+       </div>
+  </nav>
+
+  <div ng-controller="PostCtrl" class="movie-container container" >
+
+  
+   <div class="container" ng-repeat="p in posts">
+   <div class="well" >
+   {{p.post}}
+   </div>
+   <ul class="list-group">
+   <li class="list-group-item" ng-repeat="c in comments" ng-if="c.id==p.id">
+   {{c.comment}}
+   </li>
+   </ul>
+
+  </div>
+  </div>
+
+
+
+  <div class="summary">
+    <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">About the Experiment</h3>
+  </div>
+  <div class="panel-body">
+    <pre>
+    In This experiment we make use of the ng-if directive in order
+    to display a list of posts and comments that are related to each post.
+
+    We use the ng-if to filter out comments and display only those
+    comments that are related to the post.
+    </pre>
+</div>
+ </div>
+
+ <div class="summary">
+    <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">HTML5</h3>
+  </div>
+  <div class="panel-body">
+   &lt;div ng-controller=&quot;PostCtrl&quot; class=&quot;movie-container container&quot; &gt;<br />
+   &lt;div class=&quot;container&quot; ng-repeat=&quot;p in posts&quot;&gt;<br />
+   &lt;div class=&quot;well&quot; &gt;<br />
+   {{p.post}}<br />
+   &lt;/div&gt;<br />
+   &lt;ul class=&quot;list-group&quot;&gt;<br />
+   &lt;li class=&quot;list-group-item&quot; ng-repeat=&quot;c in comments&quot; ng-if=&quot;c.id==p.id&quot;&gt;<br />
+   {{c.comment}}<br />
+   &lt;/li&gt;<br />
+   &lt;/ul&gt;<br />
+  &lt;/div&gt;<br />
+  &lt;/div&gt;
+  </div>
+</div>
+ </div>
+
+ <div class="summary">
+    <div class="panel panel-default">
+       <div class="panel-heading">
+          <h3 class="panel-title">Javascript</h3>
+       </div>
+     <div class="panel-body">
+       <pre>
+  app.controller("PostCtrl", function ($scope, $resource) {
+
+
+    $scope.posts = [{ id: '1', post: 'This is Post 1' },
+                   { id: '2', post: 'This is Post 2' },
+                   { id: '3', post: 'This is Post 3' },
+                   { id: '4', post: 'This is Post 4'}];
+
+    $scope.comments=[{id:'1', comment:'This is comment 1 for post 1'},
+                     {id:'1', comment:'This is comment 2 for post 1'},
+                     {id:'2', comment:'This is comment 1 for post 2'},
+                     {id:'2', comment:'This is comment 2 for post 2'},
+                     {id:'2', comment:'This is comment 3 for post 2'},
+                     {id:'3', comment:'This is comment 1 for post 3'},
+                     {id:'3', comment:'This is comment 1 for post 3'}];
+
+});
+  
+
+       </pre>
+      </div>
+   </div>
+ </div>
+
+ 
+
+ 
+
+  <div class="summary">
+
+  <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">References</h3>
+  </div>
+  <div class="panel-body">
+    <pre>
+
+    I referred to professor Jose's video on youtube.Here is the link.
+    </pre>
+    <a href="https://www.youtube.com/watch?v=Kan1sMNOlIc">Click to View</a>
+</div>
+ </div>
+  
+  </div>
+
+  <div class="container">
+        <div class="btn-group">
+             <a href="../fileview/Default.aspx?~/Week4/Angular1.aspx" class="btn btn-primary">View Source HTML</a>
+             <a href="../fileview/Default.aspx?~/Week4/js/exp1.js" class="btn btn-primary">View Javascript</a>      
+        <div>
+  </div>
+
+ 
+</body>
+</html>

@@ -1,0 +1,42 @@
+﻿<div ng-controller="MovieUpdateController" class="container">
+
+ <div class="input-group">
+                    <div class="input-group-btn">
+                        <select data-ng-model="movieCategory"
+                                data-ng-options="movie.genre for movie in movies"
+                                class="btn btn-info">Category</select>
+                            
+                    </div>
+                    <input type="text" class="form-control" ng-model="movie" aria-label="...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="searchMovie()">Search</button>
+                    </span>
+   </div>
+
+   <div class="container">
+    <table class="table table-striped">
+     <thead>
+     <tr>
+           <th>Name</th>
+           <th>Genre</th>
+           <th>Rating</th>     
+     </tr>
+      <tr>
+       <th><input ng-model="selected.name" class="form-control" /></th>
+       <th><input ng-model="selected.genre" class="form-control" /></th>
+       <th><input ng-model="selected.rating" class="form-control" /></th>
+       <th><button ng-click="save(selected)" class="btn btn-success glyphicon glyphicon-ok"></button></th>
+     </tr>
+     </thead>
+      <tr  ng-repeat="movie in movieResult">
+           <td>{{movie.name}}</td>
+              <td>{{movie.genre}}</td>
+                 <td>{{movie.rating}}</td>
+                 <td><button class="btn btn-primary" ng-click="update(movie)">Update</button></td>
+     </tr>
+     <tbody> 
+     </tbody>
+  </table>
+  </div>
+
+</div>

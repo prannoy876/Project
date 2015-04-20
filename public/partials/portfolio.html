@@ -1,0 +1,79 @@
+﻿
+<body>
+
+  <div    class="movie-container container" >
+  <!--vkgjckgf-->
+    
+    <div    id="custom-bootstrap-menu" class="navbar navbar-default " role="navigation">
+     <div class="container-fluid">
+        <div class="navbar-header"><a class="navbar-brand" href="#"> <img style=" max-height:52px; max-width:140px; margin-top: -15px;"
+             src="../images/brand.jpg"></a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse navbar-menubuilder">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="#/dashboard">Home</a>
+                </li>
+                <li><a href="#/comics">Comics</a>
+                </li>
+                <li><a href="#/character">Characters</a>
+                </li>
+                 <li ng-if="loggedin==false"><a href="#/signup">Sign Up</a>
+                </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" ng-if="loggedin">
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{name}}<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#/cart">Cart</a></li>
+                    <li><a href="#/personal">My Profile</a></li>
+                    <li class="divider"></li>
+                    <li><a ng-click="logout()">Logout</a></li>
+          </ul>
+        </li>
+                </ul>
+            </ul>
+         </div>
+      </div>
+  </div>
+
+  <div class="media">
+    <div class="media-left media-middle">
+      <a href="#">
+         <img class="media-object" src="{{charInfo.thumbnail.path}}.{{ charInfo.thumbnail.extension}}" alt="..." width="350" height="400">
+      </a>
+    </div>
+  <div class="media-body">
+    <h3 class="media-heading">{{charInfo.name}}</h3>
+         {{charInfo.description}}
+    </div>
+  </div>
+
+
+ <h2>Comics involving {{charInfo.name}}</h2>
+        <div class="row">
+          <div class="span12">
+          <div ng-hide="loaded">
+           <img src="images/loading.GIF" />
+           </div>
+           <div class="container" ng-show="empty">
+           <h3>No comics to show for this character!</h3>
+           </div>
+            <div id="owl-demo" class="owl-carousel" ng-show="loaded">
+              <div  ng-repeat="book in list | filter:filterFm" on-last-repeat><img  class="poster" ng-click = "getComic(book.id)" src="{{book.thumbnail.path}}.{{ book.thumbnail.extension}}"></div>
+            </div>
+
+          </div>
+          </div>
+ 
+
+ 
+   <script src="http://owlgraphic.com/owlcarousel/assets/js/bootstrap-collapse.js"></script>
+    <script src="http://owlgraphic.com/owlcarousel/assets/js/bootstrap-transition.js"></script>
+    <script src="http://owlgraphic.com/owlcarousel/assets/js/bootstrap-tab.js"></script>
+	  <script src="http://owlgraphic.com/owlcarousel/assets/js/application.js"></script>
+  <script src="http://owlgraphic.com/owlcarousel/owl-carousel/owl.carousel.js"></script>
+
+ </div>
+ </body>

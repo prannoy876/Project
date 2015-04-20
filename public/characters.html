@@ -1,0 +1,42 @@
+﻿
+<!DOCTYPE html>
+
+<html ng-app="MarvelApp" lang="en">
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/characters.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/characters.js"></script>
+    
+    
+</head>
+
+
+<body>
+
+  <div ng-controller="MarvelController" class="movie-container container" >
+     <div class="input-group">
+         <input type="text" placeholder="Enter a search query" class="form-control" ng-model="searchByTitle" />
+         <span class="input-group-btn">
+         <button class="btn btn-primary" ng-click="searchMovies()"><span class="glyphicon glyphicon-search" /></button>
+         </span>
+     </div>
+     
+     </br>
+     </br>
+
+      <table class="table">
+            <tr ng-repeat="char in character">
+              <td><div>{{char.name}}</br>
+              <img class="poster" src="{{char.thumbnail.path}}.{{ char.thumbnail.extension}}" width="90" height="90" /></div></td>
+              <td>{{char.description}}</td>
+            </tr>
+         </table>
+       
+  </div>
+ 
+  </body>
+
+  </html>

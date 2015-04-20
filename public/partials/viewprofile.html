@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+ <div  class="movie-container container">
+    
+   <div id="custom-bootstrap-menu" class="navbar navbar-default " role="navigation">
+     <div class="container-fluid">
+        <div class="navbar-header"><a class="navbar-brand" href="#"> <img style=" max-height:52px; max-width:140px; margin-top: -15px;"
+             src="../images/brand.jpg"></a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse navbar-menubuilder">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="#/dashboard">Home</a>
+                </li>
+                <li><a href="#/comics">Comics</a>
+                </li>
+                <li><a href="#/character">Characters</a>
+                </li>
+                <li ng-if="loggedin==false"><a href="#/signup">Sign Up</a>
+                </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" ng-if="loggedin">
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{name}}<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#/cart">Cart</a></li>
+                    <li><a href="#/personal">My Profile</a></li>
+                    <li class="divider"></li>
+                    <li><a ng-click="logout()">Logout</a></li>
+          </ul>
+        </li>
+                </ul>
+            </ul>
+         </div>
+      </div>
+  </div>
+    
+    
+   <div class="media info">
+    <div class="media-left media-top">
+      
+         <img class="img-profile" id="myImg" ng-model="imageListener" class="poster" src="{{image}}" alt="...">
+    
+    <div class="media-left media-bottom">
+      <ul class="list-group">
+        
+         <li class="list-group-item">
+          <span  ng-click="showfollowers()" class="badge">View</span>
+          Followers
+         </li>
+         <li class="list-group-item">
+          <span ng-click="showfollowing()" class="badge">View</span>
+          Following
+         </li>
+          <li class="list-group-item">
+          <button class="btn btn-success" ng-click="followUser(userid)">{{followerstatus}}</button>
+         </li>
+       </ul>
+     </div>
+    </div>
+  <div class="media-body">
+   <div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading">{{fullname}}</div>
+  <div class="panel-body">
+    <p>{{about}}</p>
+  </div>
+
+  </div>
+  </div>
+  </div>
+     </br>
+     </br>
+
+   <div class="panel panel-primary">
+   <!--vkgjckgf-->
+        <div class="panel-heading">
+    <h3 class="panel-title">{{viewname}}'s Favorite Characters</h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="span12">
+          <div class="loading" ng-hide="loaded">
+           <img src="images/loading.GIF" />
+           </div>
+            <div id="owl-demo2" class="owl-carousel" ng-show="loaded">
+              <div  ng-repeat="hero in   character" on-last-repeat ><a  ng-click = "selectCharacter(hero.charid)" data-toggle="modal" data-target="#myModal2"><img  class="poster"  src="{{hero.image}}"/></a></div>
+            </div>
+            </div>
+          </div>
+          </div>
+      </div>
+
+
+       <div id="overlay-for-contacts2" >
+            <div class="alert alert-info" id="overlay-for-contacts-inside2">
+            <p class="info"><h4>{{viewname}}'s Followers</h4></p>
+            <p ng-hide="nofollowers">{{viewname}} has no followers</p>
+                   <ul class="list-group">
+                      <a ng-repeat="f in followerslist" href="#/view/{{f.id}}"><li  class="list-group-item">{{f.first}}  {{f.last}}</li></a>
+                     
+                    </ul>
+            <button type="button"  class="btn closebutton2 btn-default"  value="Close">Close</button>
+            </div>
+        </div>
+
+
+        <div id="overlay-for-contacts3" >
+            <div class="alert alert-info" id="overlay-for-contacts-inside3">
+            <p class="info"><h4>People {{viewname}} is following</h4></p>
+            <p ng-hide="notfollowing">{{viewname}} is not following anybody</p>
+                   <ul class="list-group">
+                      <a ng-repeat="f in followinglist" href="#/view/{{f.id}}"><li  class="list-group-item">{{f.first}}  {{f.last}}</li></a>
+                     
+                    </ul>
+            <button type="button"  class="btn closebutton3 btn-default"  value="Close">Close</button>
+            </div>
+        </div>
+
+
+
+    <div class="panel panel-primary">
+   <!--vkgjckgf-->
+        <div class="panel-heading">
+    <h3 class="panel-title">Comics recently reviews by {{viewname}}</h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="span12">
+          <div class="loading" ng-hide="loaded2">
+           <img src="images/loading.GIF" />
+           </div>
+            <div id="owl-demo3" class="owl-carousel">
+              <div  ng-repeat="book in reviewed" on-last-repeat2 ><a  ng-click ="selectComic(book.comicid)" ><img  class="poster"  src="{{book.image}}"/></a></div>
+            </div>
+            </div>
+        </div>
+        </div>
+        </div>
+</div>
+
+
+ <script src = "js/owl.carousel.js"></script>
+ <script src = "js/owl.carousel.min.js"></script>
+  <script src = "js/owl.js"></script>
+      
+</div>
+
+</body>
+</html>
